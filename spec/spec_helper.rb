@@ -1,8 +1,12 @@
+require File.join(File.dirname(__FILE__), '..', '/app/app.rb')
+
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
 require './app/models/link'
 # require 'features/web_helpers'
+
+Capybara.app = BookmarkManager
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
