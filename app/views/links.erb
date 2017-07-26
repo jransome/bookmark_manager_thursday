@@ -10,6 +10,7 @@
       <li>
         Title:  <%= link.title %>
         URL:    <%= link.url %>
+        Tag:    <%= link.tags.last.name if link.tags.last %>
       </li>
       <% end %>
     </ul>
