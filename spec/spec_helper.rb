@@ -1,6 +1,7 @@
 require File.join(File.dirname(__FILE__), '..', '/app/app.rb')
 
 require 'capybara/rspec'
+require 'database_cleaner'
 require 'simplecov'
 require 'simplecov-console'
 require './app/models/link'
@@ -15,6 +16,19 @@ RSpec.configure do |config|
 
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
+  end
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
