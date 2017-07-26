@@ -1,4 +1,9 @@
+require 'database_cleaner'
+
 feature 'Viewing links' do
+  before { DatabaseCleaner.strategy = :truncation }
+  after { DatabaseCleaner.clean }
+
   scenario 'I can see all the links at the links page' do
     Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
     visit('/links')
