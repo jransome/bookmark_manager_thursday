@@ -6,8 +6,6 @@ class BookmarkManager < Sinatra::Base
   enable :sessions
 
   get '/links' do
-    @links = Link.all
-    p @links
     erb :links
   end
 
@@ -23,5 +21,4 @@ class BookmarkManager < Sinatra::Base
   end
 
   run! if app_file == $0
-
 end
