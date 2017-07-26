@@ -1,15 +1,19 @@
-require File.join(File.dirname(__FILE__), '..', '/app/app.rb')
+ENV['RACK_ENV'] = 'test'
+
+# require File.join(File.dirname(__FILE__), '..', '/app/app.rb')
 
 require 'capybara/rspec'
 require 'database_cleaner'
 require 'simplecov'
 require 'simplecov-console'
 require './app/models/link'
-# require 'features/web_helpers'
+require './app/app'
 
 Capybara.app = BookmarkManager
 
 RSpec.configure do |config|
+  config.shared_context_metadata_behavior = :apply_to_host_groups
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
@@ -30,6 +34,4 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
-  config.shared_context_metadata_behavior = :apply_to_host_groups
 end

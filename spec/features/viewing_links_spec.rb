@@ -1,4 +1,4 @@
-require 'database_cleaner'
+
 
 feature 'Viewing links' do
   before { DatabaseCleaner.strategy = :truncation }

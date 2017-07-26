@@ -5,7 +5,7 @@ Link        :initialize(params)         # => link
 
 
 List        :initialize                 # => list
-            :add_link(link)             # => link
+            :link_new(link)             # => link
             :delete_link(link)          # => link
             :links                      # => array of links
             :filter(tag)                # => array of links filtered by tag
