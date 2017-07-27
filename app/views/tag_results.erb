@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Links</title>
+    <title>Links for <%=@tag%></title>
   </head>
   <body>
     <h1>Links</h1>
     <ul id='links'>
       <% @links.each do |link| %>
       <li>
-        <%= link.title %> (<%= link.url %>). Tags: <%= link.tags.last.name if link.tags.last %>
+        <%= link.title %> (<%= link.url %>)
       </li>
       <% end %>
     </ul>
