@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <body>
-    <% if flash[:password_error] %>
-      <div id='password_error'><%= flash[:password_error] %></div>
+    <% if flash[:errors] && !flash[:errors].empty? %>
+      <ul id='errors'>
+        <% flash[:errors].each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
     <% end %>
     <%= yield %>
   </body>

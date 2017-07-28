@@ -29,11 +29,14 @@ class BookmarkManager < Sinatra::Base
     @user = User.new(email: params[:email],
                        password: params[:password],
                        password_confirmation: params[:password_confirmation])
+
     if @user.save
       session[:current_user_id] = @user.id
       redirect '/links'
     else
-      flash.now[:password_error] = "Password and password confirmation fields don't match!"
+      flash.now[:errors] = @user.errors.full_messages
+      # flash.now[:email_uniq_error] = "This email address is already registered!"
+      # flash.now[:password_error] = "Password and password confirmation fields don't match!"
       erb :new_user
     end
   end
