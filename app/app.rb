@@ -18,11 +18,11 @@ class BookmarkManager < Sinatra::Base
     end
   end
 
-  get '/' do
+  get '/users/new' do
     erb :index
   end
 
-  post '/sign_up' do
+  post '/users/new' do
     p params[:password]
     user = User.create(email: params[:email])#, password: params[:password])
     user.password = params[:password]

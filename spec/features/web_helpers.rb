@@ -1,5 +1,5 @@
 def register_user
-  visit('/')
+  visit('/users/new')
   fill_in 'email', with: 'dave@dave.dv'
   fill_in 'password', with: '1234dave'
   click_button 'Register'
