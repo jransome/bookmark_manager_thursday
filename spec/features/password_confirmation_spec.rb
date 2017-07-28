@@ -1,7 +1,8 @@
 feature 'FEATURE: password confirmation' do
-  scenario 'fills in a mismatching confirmation password' do
+  scenario 'fails when filling in a mismatching confirmation password' do
     visit('/users/new')
-    register_user('dave@dave.dv','1234dave', 'dave')
-    expect(User.all.count).to eq 0
+    expect { register_user(password_confirmation: 'wrong') }.not_to change(User, :count)
+    expect(page).to have_current_path('/users/new')
+    expect(page).to have_content "Password and password confirmation fields don't match!"
   end
 end

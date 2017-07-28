@@ -1,4 +1,4 @@
-def register_user(email, password, password_confirmation)
+def register_user(email: 'dave@dave.dv', password: '1234', password_confirmation: '1234')
   visit('/users/new')
   fill_in 'email', with: email
   fill_in 'password', with: password
